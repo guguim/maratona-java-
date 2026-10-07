@@ -10,6 +10,8 @@ public class Main {
         Cliente c2 = new Cliente("Pedro", "2313215", new Endereco("asdsad", 45, "sp", "SP"));
         System.out.println(c1.equals(c2));
 
+
+
     }
 
 }
