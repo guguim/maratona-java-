@@ -1,4 +1,4 @@
-package academy.devdojo.maratonajava.exercicios.banksystem.models;
+package academy.devdojo.maratonajava.exercicios.banksystem.model;
 
 public class Endereco {
 
