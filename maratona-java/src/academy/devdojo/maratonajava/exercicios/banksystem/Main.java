@@ -10,11 +10,14 @@ public class Main {
         Cliente c1 = new Cliente("Hugo", "5213215", new Endereco("asdsad", 45, "sp", "SP"));
         Cliente c2 = new Cliente("Pedro", "2313215", new Endereco("asdsad", 45, "sp", "SP"));
         System.out.println(c1.equals(c2));
-        ContaCorrente contaCorrente = new ContaCorrente(c1,0);
+        ContaCorrente contaCorrente = new ContaCorrente(c1,100);
 
-
-        contaCorrente.sacar(50);
-
+        contaCorrente.depositar(500);
+        System.out.println(contaCorrente);
+        contaCorrente.sacar(400);
+        System.out.println(contaCorrente);
+        contaCorrente.calcularTarifaMensal();
+        System.out.println(contaCorrente);
 
     }
 

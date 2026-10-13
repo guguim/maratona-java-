@@ -16,25 +16,21 @@ public class ContaCorrente extends Conta {
 
     @Override
     public void sacar(double valor) {
-        StatusConta status = getStatus();
-
-        if (valor < 0) {
-            System.err.println("Você não pode sacar valores negativos");
-        } else if (status == ATIVA) {
-
-        } else if (valor <= this.saldo + limiteChequeEspecial) {
-            this.saldo -= valor;
-            System.out.println(this.saldo);
+        if (valor <= 0){
+            System.out.println("Valor inválido");
+        } else if (valor <= saldo + limiteChequeEspecial) {
+            saldo -= valor;
+            System.out.println("Valor sacado: " + valor);
         } else {
-            System.err.println("Você não tem saldo suficiente");
-
+            System.out.println("Saldo insuficiente");
         }
-
     }
 
     @Override
     public double calcularTarifaMensal() {
-        return 0;
+        double percentual = 2.0/100;
+        return saldo * (saldo * percentual);
+
     }
 
 
