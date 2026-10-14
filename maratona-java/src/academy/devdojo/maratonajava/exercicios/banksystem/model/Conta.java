@@ -1,6 +1,8 @@
 package academy.devdojo.maratonajava.exercicios.banksystem.model;
 
 import academy.devdojo.maratonajava.exercicios.banksystem.enums.StatusConta;
+import academy.devdojo.maratonajava.exercicios.banksystem.exceptions.SaldoInsuficienteException;
+import academy.devdojo.maratonajava.exercicios.banksystem.exceptions.ValorInvalidoException;
 
 public abstract class Conta {
     private int numero;
@@ -20,11 +22,16 @@ public abstract class Conta {
         this.saldo = saldo;
     }
 
-    public void depositar(double valor) {
-        this.saldo += valor;
+    public void depositar(double valor)throws ValorInvalidoException {
+        if (valor <=0){
+            throw new ValorInvalidoException("Valor inválido");
+        } else {
+            saldo += valor;
+            System.out.println("Valor depositado: " + valor);
+        }
     }
 
-    public void sacar(double valor) {
+    public void sacar(double valor) throws SaldoInsuficienteException, ValorInvalidoException {
         this.saldo -= valor;
 
     }

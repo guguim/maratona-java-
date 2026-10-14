@@ -1,11 +1,14 @@
 package academy.devdojo.maratonajava.exercicios.banksystem.model;
 
 import academy.devdojo.maratonajava.exercicios.banksystem.enums.StatusConta;
+import academy.devdojo.maratonajava.exercicios.banksystem.exceptions.SaldoInsuficienteException;
+import academy.devdojo.maratonajava.exercicios.banksystem.exceptions.ValorInvalidoException;
 
 import static academy.devdojo.maratonajava.exercicios.banksystem.enums.StatusConta.ATIVA;
 
 public class ContaCorrente extends Conta {
     private double limiteChequeEspecial;
+    private static final double TARIFA_MENSAL = 15;
 
 
     public ContaCorrente(Cliente titular, double limiteChequeEspecial) {
@@ -15,21 +18,20 @@ public class ContaCorrente extends Conta {
     }
 
     @Override
-    public void sacar(double valor) {
+    public void sacar(double valor) throws SaldoInsuficienteException, ValorInvalidoException {
         if (valor <= 0){
-            System.out.println("Valor inválido");
+            throw new ValorInvalidoException("Valor inválido");
         } else if (valor <= saldo + limiteChequeEspecial) {
             saldo -= valor;
             System.out.println("Valor sacado: " + valor);
         } else {
-            System.out.println("Saldo insuficiente");
+            throw new SaldoInsuficienteException("Saldo insuficiente");
         }
     }
 
     @Override
     public double calcularTarifaMensal() {
-        double percentual = 2.0/100;
-        return saldo * (saldo * percentual);
+        return TARIFA_MENSAL;
 
     }
 
