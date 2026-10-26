@@ -1,11 +1,27 @@
 package academy.devdojo.maratonajava.exercicios.banksystem.services;
 
+import academy.devdojo.maratonajava.exercicios.banksystem.exceptions.ContaNaoEncontradaException;
 import academy.devdojo.maratonajava.exercicios.banksystem.model.Conta;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Banco {
-    ArrayList list = new ArrayList<Conta>();
+    private List<Conta> contas = new ArrayList<>();
+
+    public void adicionarConta(Conta conta) {
+        contas.add(conta);
+        System.out.println(conta);
+    }
+
+    public Conta buscarConta(int numero) throws ContaNaoEncontradaException {
+        for (Conta i : contas) {
+            if (i.getNumero() == numero) {
+                return i;
+            }
+        }
+        throw new ContaNaoEncontradaException("Conta não encontrada");
+    }
 
 
 }

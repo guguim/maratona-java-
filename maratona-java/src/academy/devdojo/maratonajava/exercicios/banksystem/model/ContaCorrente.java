@@ -45,6 +45,7 @@ public class ContaCorrente extends Conta {
         return "ContaCorrente{" +
                 "limiteChequeEspecial=" + limiteChequeEspecial +
                 ", saldo=" + saldo +
+                ", número=" +getNumero() +
                 '}';
     }
 }
