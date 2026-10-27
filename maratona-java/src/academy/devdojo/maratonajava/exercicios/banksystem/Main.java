@@ -53,6 +53,14 @@ public class Main {
         }
         System.out.println(contaCorrente);
 
+        try {
+            banco.sacar(1,50);
+        } catch (ValorInvalidoException | ContaNaoEncontradaException | SaldoInsuficienteException e) {
+            throw new RuntimeException(e.getMessage());
+        }
+
+        System.out.println(contaCorrente);
+
     }
 
 }
