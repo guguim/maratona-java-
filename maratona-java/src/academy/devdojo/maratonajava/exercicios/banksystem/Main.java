@@ -14,14 +14,16 @@ public class Main {
 
         Cliente c1 = new Cliente("Hugo", "5213215", new Endereco("asdsad", 45, "sp", "SP"));
         Cliente c2 = new Cliente("Pedro", "2313215", new Endereco("asdsad", 45, "sp", "SP"));
+        Cliente c3 = new Cliente("João", "512352", new Endereco("asdsad", 45, "sp", "SP"));
         System.out.println(c1.equals(c2));
         ContaCorrente contaCorrente = new ContaCorrente(c1, 100);
-        ContaCorrente contaCorrente2 = new ContaCorrente(c1, 100);
+        ContaCorrente contaCorrente2 = new ContaCorrente(c2, 100);
+        ContaCorrente contaCorrente3 = new ContaCorrente(c3, 100);
         Banco banco = new Banco();
-
 
         banco.adicionarConta(contaCorrente);
         banco.adicionarConta(contaCorrente2);
+        banco.adicionarConta(contaCorrente3);
 
         try {
             contaCorrente.depositar(100);
@@ -47,19 +49,29 @@ public class Main {
         }
 
         try {
-            banco.depositar(1,50);
+            banco.depositar(1, 50);
         } catch (ValorInvalidoException | ContaNaoEncontradaException e) {
             throw new RuntimeException(e.getMessage());
         }
         System.out.println(contaCorrente);
 
         try {
-            banco.sacar(1,50);
+            banco.sacar(1, 50);
         } catch (ValorInvalidoException | ContaNaoEncontradaException | SaldoInsuficienteException e) {
             throw new RuntimeException(e.getMessage());
         }
 
         System.out.println(contaCorrente);
+
+        banco.listarContas();
+
+        try {
+            banco.removerConta(4);
+        } catch (ContaNaoEncontradaException e) {
+            throw new RuntimeException(e.getMessage());
+        }
+        banco.listarContas();
+
 
     }
 

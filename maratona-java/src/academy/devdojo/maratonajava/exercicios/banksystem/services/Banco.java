@@ -36,4 +36,19 @@ public class Banco {
         conta.sacar(valor);
     }
 
+    public void listarContas(){
+       if (contas.isEmpty()){
+           System.out.println("Não há contas criadas");
+       } else {
+           for (Conta i : contas){
+               System.out.println(i);
+           }
+       }
+    }
+
+    public void removerConta(int numero) throws ContaNaoEncontradaException{
+        Conta conta = buscarConta(numero);
+        contas.remove(conta);
+    }
+
 }
