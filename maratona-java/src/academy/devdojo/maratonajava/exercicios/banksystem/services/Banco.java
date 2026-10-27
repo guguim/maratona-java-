@@ -1,6 +1,7 @@
 package academy.devdojo.maratonajava.exercicios.banksystem.services;
 
 import academy.devdojo.maratonajava.exercicios.banksystem.exceptions.ContaNaoEncontradaException;
+import academy.devdojo.maratonajava.exercicios.banksystem.exceptions.ValorInvalidoException;
 import academy.devdojo.maratonajava.exercicios.banksystem.model.Conta;
 
 import java.util.ArrayList;
@@ -21,6 +22,12 @@ public class Banco {
             }
         }
         throw new ContaNaoEncontradaException("Conta não encontrada");
+    }
+
+    public void depositar(int numero, double valor) throws ContaNaoEncontradaException, ValorInvalidoException {
+        Conta conta = buscarConta(numero);
+        conta.depositar(valor);
+
     }
 
 

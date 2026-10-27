@@ -46,6 +46,13 @@ public class Main {
             throw new RuntimeException(e.getMessage());
         }
 
+        try {
+            banco.depositar(1,50);
+        } catch (ValorInvalidoException | ContaNaoEncontradaException e) {
+            throw new RuntimeException(e.getMessage());
+        }
+        System.out.println(contaCorrente);
+
     }
 
 }
