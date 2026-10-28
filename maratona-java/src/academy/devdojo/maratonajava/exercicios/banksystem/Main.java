@@ -9,68 +9,24 @@ import academy.devdojo.maratonajava.exercicios.banksystem.model.ContaCorrente;
 import academy.devdojo.maratonajava.exercicios.banksystem.model.Endereco;
 import academy.devdojo.maratonajava.exercicios.banksystem.services.Banco;
 
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-
-        Cliente c1 = new Cliente("Hugo", "5213215", new Endereco("asdsad", 45, "sp", "SP"));
-        Cliente c2 = new Cliente("Pedro", "2313215", new Endereco("asdsad", 45, "sp", "SP"));
-        Cliente c3 = new Cliente("João", "512352", new Endereco("asdsad", 45, "sp", "SP"));
-        System.out.println(c1.equals(c2));
-        ContaCorrente contaCorrente = new ContaCorrente(c1, 100);
-        ContaCorrente contaCorrente2 = new ContaCorrente(c2, 100);
-        ContaCorrente contaCorrente3 = new ContaCorrente(c3, 100);
         Banco banco = new Banco();
+        Scanner sc = new Scanner(System.in);
+        int opcao = sc.nextInt();
+        do {
+            System.out.println("Bem vindo ao seu Sistema de Banco, escolha alguma das opções abaixo");
+        } while (opcao != 7);{
+            switch (opcao){
+                case 1:
+                    System.out.println();
+                    break;
+            }
 
-        banco.adicionarConta(contaCorrente);
-        banco.adicionarConta(contaCorrente2);
-        banco.adicionarConta(contaCorrente3);
-
-        try {
-            contaCorrente.depositar(100);
-        } catch (ValorInvalidoException e) {
-            throw new RuntimeException(e.getMessage());
-        }
-        System.out.println(contaCorrente);
-
-        try {
-            contaCorrente.sacar(10);
-        } catch (SaldoInsuficienteException e) {
-            throw new RuntimeException(e.getMessage());
-        }
-        System.out.println(contaCorrente);
-
-        System.out.println("antes da busca");
-        try {
-            Conta conta = banco.buscarConta(2);
-            System.out.println("achou: " + conta.getNumero());
-            System.out.println(conta);
-        } catch (ContaNaoEncontradaException e) {
-            throw new RuntimeException(e.getMessage());
         }
 
-        try {
-            banco.depositar(1, 50);
-        } catch (ValorInvalidoException | ContaNaoEncontradaException e) {
-            throw new RuntimeException(e.getMessage());
-        }
-        System.out.println(contaCorrente);
-
-        try {
-            banco.sacar(1, 50);
-        } catch (ValorInvalidoException | ContaNaoEncontradaException | SaldoInsuficienteException e) {
-            throw new RuntimeException(e.getMessage());
-        }
-
-        System.out.println(contaCorrente);
-
-        banco.listarContas();
-
-        try {
-            banco.removerConta(4);
-        } catch (ContaNaoEncontradaException e) {
-            throw new RuntimeException(e.getMessage());
-        }
-        banco.listarContas();
 
 
     }
